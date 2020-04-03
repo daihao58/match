@@ -1,0 +1,102 @@
+//
+// Variables
+// --------------------------------------------------
+
+//== Layouts
+@rootFontSize: 100;
+@minScreenWidth: 560px;
+@maxScreenWidth: (@minScreenWidth - 1px);
+@containerWidth: 1270;
+@navHeight: 60;
+@navItemWidth: 110;
+@topBannerHeight: 220;
+@topBannerHeightMobile: 250;
+@navFontSize: 20px;
+@body-background: #f1f1f1;
+@bg-footer: #2e3033;
+@qrWidth: 130;
+@qrWidthMobile: 160;
+@bannerHeight: 500;
+@bannerWidth: 950;
+
+//== Colors
+@color-main: #e7281e;
+@color-darker: #1b1b1b;
+@color-dark: #333;
+@color-gray: #666;
+@color-light: #999;
+@color-lighter: #e0e0e0;
+@color-error: #f00;
+@link-color: #e7281e;
+@link-hover-color: tint(@link-color, 20%);
+@link-active-color: shade(@link-color, 5%);
+
+//== bgColor
+@bg-gray: #f5f6fa;
+@bg-dark: #333;
+@bg-blue: @color-main;
+@bg-disabled: #eaeaea;
+
+//== Media queries breakpoints
+@grid-columns: 12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width: 20;
+
+//== borderRadius
+@border-radius: 6;
+@border-radius-lg: 12;
+@border-base: 1px solid @color-lighter;
+@border-dashed: 1px dashed @color-lighter;
+@cursor-disabled: not-allowed;
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-family-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@font-family-serif: Georgia, 'Times New Roman', Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace: Menlo, Monaco, Consolas, 'Courier New', monospace;
+@font-family-base: @font-family-sans-serif;
+
+@font-size-base: 18px;
+@font-weight-bold: 600;
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base: 1.428571429; // 20/14
+@line-height-paragraph: 1.71428571;
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
+
+@input-font-size: 16px;
+@input-height-base: 50px;
+@input-padding-h: 16px;
+@input-padding-v: 10px;
+@input-height-base-m: 38px;
+@input-padding-h-m: 12px;
+@input-padding-v-m: 4px;
+@input-bg-color: #f7f7f7;
+@input-border-color: @input-bg-color;
+@input-border-focus: @color-main;
+@radio-width: 20px;
+@radio-width-m: 18px;
+
+//== Tables
+//
+//## Customizes the `.table` component with basic values, each used across all table variations.
+
+//** Padding for `<th>`s and `<td>`s.
+@table-cell-padding: 12px;
+//** Padding for cells in `.table-condensed`.
+@table-condensed-cell-padding: 5px;
+
+//** Default background color used for all tables.
+@table-bg: transparent;
+//** Background color used for `.table-striped`.
+@table-bg-accent: #f3f7fa;
+//** Background color used for `.table-hover`.
+@table-bg-hover: #d6eaf9;
+@table-bg-active: @table-bg-hover;
+
+//** Border color for table and cell borders.
+@table-border-color: #ddd;

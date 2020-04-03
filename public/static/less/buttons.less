@@ -1,0 +1,31 @@
+/* ======================================================
+ *  Button
+ * ====================================================== */
+
+.btn {
+  .button-init();
+  .button-size(114px;40px;14px;);
+  border: none;
+}
+
+.btn-wire {
+  .button--wire-variant(@color-main);
+}
+
+.btn-text {
+  background-color: transparent
+}
+
+.btn-large {
+  .button-size(100%;50px;18px;);
+}
+
+// Alternate buttons
+// --------------------------------------------------
+.btn-primary {
+  .button-variant(#fff;@color-main;);
+  &:focus, &:hover, &.focus {
+    color: #fff; // a标签
+    background: darken(@color-main, 5%);
+  }
+}

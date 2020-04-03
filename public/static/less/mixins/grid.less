@@ -1,0 +1,76 @@
+// Mixins
+// --------------------------------------------------
+// Grid
+
+.grid-fixed(@gutter: @grid-gutter-width) {
+  margin-right: auto;
+  margin-left: auto;
+  .px2rem(padding-left, (@gutter / 2));
+  .px2rem(padding-right, (@gutter / 2));
+  &:extend(.cf all);
+}
+
+// Creates a wrapper for a series of columns
+.make-row(@gutter: @grid-gutter-width) {
+  .px2rem(margin-left, -(@gutter / 2));
+  .px2rem(margin-right, -(@gutter / 2));
+  &:extend(.cf all);
+}
+
+// Generate the large column offsets
+.make-column-offset(@columns) {
+  @media (min-width: @screen-lg) {
+    margin-left: percentage((@columns / @grid-columns));
+  }
+}
+
+.make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) {
+    // initial
+    @item: ~'.col-sm-@{index}, .col-lg-@{index}';
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) {
+    // general; "=<" isn't a typo
+    @item: ~'.col-sm-@{index}, .col-lg-@{index}';
+    .col((@index + 1), ~'@{list}, @{item}');
+  }
+  .col(@index, @list) when (@index > @grid-columns) {
+    // terminal
+    @{list} {
+      float: left;
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      // Inner gutter via padding
+      .px2rem(padding-left, (@grid-gutter-width / 2));
+      .px2rem(padding-right, (@grid-gutter-width / 2));
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+  .col-@{class}-@{index} {
+    width: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid-column(@index, @type) when (@type = offset) {
+  .col-@{class}-offset-@{index} {
+    margin-left: percentage((@index / @grid-columns));
+  }
+}
+
+// Basic looping in LESS
+.loop-grid-columns(@index,@class , @type) when (@index >= 0) {
+  .calc-grid-column(@index, @class, @type);
+  // next iteration
+  .loop-grid-columns((@index - 1), @class, @type);
+}
+
+// Create grid for specific class
+.make-grid(@class) {
+  .loop-grid-columns(@grid-columns, @class, width);
+  .loop-grid-columns(@grid-columns, @class, offset);
+}

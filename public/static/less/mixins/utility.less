@@ -1,0 +1,303 @@
+// Mixins
+// --------------------------------------------------
+// clearfix
+.clearfix() {
+  &:before,
+  &:after {
+    content: ' '; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// 垂直居中对齐
+.vm() {
+  &:before {
+    content: ' ';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.tab-focus() {
+  // WebKit-specific. Other browsers will keep their default outline style.
+  // (Initially tried to also force default via `outline: initial`,
+  // but that seems to erroneously remove the outline in Firefox altogether.)
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~'alpha(opacity=@{opacity-ie})';
+}
+
+// dot
+.dot(@width: 7px;@border-radius: 50%; @bg: @color-main) {
+  display: inline-block;
+  width: @width;
+  height: @width;
+  margin-top: -3px;
+  .borderRadius(@border-radius);
+  background-color: @bg;
+  vertical-align: middle;
+}
+
+// px 转为 rem
+.px2rem(@name, @px) {
+  @{name}: (@px / @rootFontSize) * 1rem;
+}
+
+// 配置字体大小
+.fontSize(@px) {
+  @media screen and (max-width: @maxScreenWidth) {
+    font-size: floor((@px / 1.28) * 1px)
+  }
+  @media screen and (min-width: @minScreenWidth) {
+    font-size: @px + 0px;
+  }
+}
+
+// fontSize
+.calc-utility(@index, @type) when (@type = fontsize) {
+  .font-@{index} {
+    font-size: @index * 1px !important;
+  }
+}
+
+// marginTop
+.calc-utility(@index, @type) when (@type = marginTop) {
+  .mt-@{index} {
+    .px2rem(margin-top, @index);
+  }
+}
+
+// marginBottom
+.calc-utility(@index, @type) when (@type = marginBottom) {
+  .mb-@{index} {
+    .px2rem(margin-bottom, @index);
+  }
+}
+
+// marginLeft
+.calc-utility(@index, @type) when (@type = marginLeft) {
+  .ml-@{index} {
+    .px2rem(margin-left, @index);
+  }
+}
+
+// marginRight
+.calc-utility(@index, @type) when (@type = marginRight) {
+  .mr-@{index} {
+    .px2rem(margin-right, @index);
+  }
+}
+
+// paddingTB;
+.calc-utility(@index, @type) when (@type = paddingTB) {
+  .ptb-@{index} {
+    padding-top: @index * 0.02rem !important;
+    padding-bottom: @index * 0.02rem !important;
+  }
+}
+
+// paddingLR;
+.calc-utility(@index, @type) when (@type = paddingLR) {
+  .plr-@{index} {
+    padding-left: @index * 0.02rem !important;
+    padding-right: @index * 0.02rem !important;
+  }
+}
+
+// text-overflow;
+.pre() {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.calc-utility(@index, @type) when (@type = textOverflow) and (@index > 1) {
+  .t-e-@{index} {
+    .pre();
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @index;
+    height: @index * 1.4em;
+    line-height: 1.4em;
+  }
+}
+.calc-utility(@index, @type) when (@type = textOverflow) and (@index = 1) {
+  .t-e-@{index} {
+    .pre();
+  }
+}
+
+// 循环
+.loop-utility(@index, @diff, @end, @type) when (@index >= @end) {
+  .calc-utility(@index, @type);
+  .loop-utility((@index - @diff), @diff, @end, @type);
+}
+
+.make-utility() {
+  .loop-utility(36, 2, 12, fontsize);
+  .loop-utility(60, 5, -10, marginTop);
+  // .loop-utility(28, 4, 0, marginBottom);
+  // .loop-utility(24, 4, 0, marginLeft);
+  // .loop-utility(24, 4, 0, marginRight);
+  // .loop-utility(36, 4, 0, paddingTB);
+  // .loop-utility(36, 4, 0, paddingLR);
+  // .loop-utility(3, 1, 1, textOverflow);
+}
+
+// Backface visibility
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden`
+
+.backface-visibility(@visibility) {
+  -webkit-backface-visibility: @visibility;
+  -moz-backface-visibility: @visibility;
+  backface-visibility: @visibility;
+}
+
+// Drop shadows
+//
+// Note: Deprecated `.box-shadow()` as of v3.1.0 since all of Bootstrap's
+// supported browsers that have box shadow capabilities now support it.
+
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+  box-shadow: @shadow;
+}
+
+// CSS3 Content Columns
+.content-columns(@column-count; @column-gap: @grid-gutter-width) {
+  -webkit-column-count: @column-count;
+  -moz-column-count: @column-count;
+  column-count: @column-count;
+  -webkit-column-gap: @column-gap;
+  -moz-column-gap: @column-gap;
+  column-gap: @column-gap;
+}
+
+// Optional hyphenation
+.hyphens(@mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @mode;
+  -moz-hyphens: @mode;
+  -ms-hyphens: @mode; // IE10+
+  -o-hyphens: @mode;
+  hyphens: @mode;
+}
+
+// Placeholder text
+.placeholder(@color: @color-light) {
+  // Firefox
+  &::-moz-placeholder {
+    color: @color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  &:-ms-input-placeholder {
+    color: @color;
+  } // Internet Explorer 10+
+  &::-webkit-input-placeholder {
+    color: @color;
+  } // Safari and Chrome
+}
+
+// User select
+// For selecting text on the page
+.user-select(@select) {
+  -webkit-user-select: @select;
+  -moz-user-select: @select;
+  -ms-user-select: @select; // IE10+
+  user-select: @select;
+}
+
+// Tag-fixed
+.tag-fixed(@bgColor;) {
+  position: absolute;
+  top: 8px;
+  left: -6px;
+  padding: 5px 8px 3px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  font-style: normal;
+  background-color: @bgColor;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: darken(@bgColor, 15%) darken(@bgColor, 15%) transparent
+      transparent;
+    z-index: 22;
+  }
+}
+
+// 1px border
+.border1px(@name: bottom, @type: solid, @color: #ccc) {
+  @media screen and (-webkit-min-device-pixel-ratio: 1) {
+    @{name}: 1px @type @color;
+  }
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    @{name}: 0.5px @type @color;
+  }
+  @media screen and (-webkit-min-device-pixel-ratio: 3) {
+    @{name}: 0.333333px @type @color;
+  }
+}
+
+// h1 - h6
+.make-title-font-size(@i: 1) when (@i < 7) {
+  h@{i} {
+    .fontSize((10 - @i) * 4);
+  }
+  .make-title-font-size(@i + 1);
+}
+
+// border-radius
+.borderRadius(@px) {
+  .px2rem(border-radius, @px);
+}
+
+// 固定容器纵横比
+.aspectRatio(@w, @h) {
+  padding-bottom:  @h / @w * 100%;
+}
+
+// 绘制 +
+.icon-add(@size: 24, @weight: 3, @color: #ccc) {
+  position: relative;
+  display: inline-block;
+  width: @size + 0px;
+  height: @size + 0px;
+  &::before,
+  &::after {
+    content: ' ';
+    position: absolute;
+    background-color: @color;
+    border-radius: @weight / 2 + 0px;
+  }
+  &::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: @weight + 0px;
+    transform: translateY(-50%);
+  }
+  &::after {
+    top: 0;
+    left: 50%;
+    width: @weight + 0px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+}

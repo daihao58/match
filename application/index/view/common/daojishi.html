@@ -1,0 +1,91 @@
+            <div id="counterBlock" class="col-lg-3 col-sm-12 mt-bk">
+              <!-- 倒计时 -->
+              <div class="counter-block">
+                <h3 id="Atitle">暂无活动</h3>
+                <div class="mt-5 font-18" id="Atime">()</div>
+                <ul id="counter" class="counter">
+                  <li class="counter-item">
+                    <div class="time-box" id="_d">12</div>
+                    <span>天</span>
+                  </li>
+                  <li class="counter-item">
+                    <div class="time-box" id="_h">05</div>
+                    <span>时</span>
+                  </li>
+                  <li class="counter-item">
+                    <div class="time-box" id="_m">43</div>
+                    <span>分</span>
+                  </li>
+                  <li class="counter-item">
+                    <div class="time-box" id="_s">33</div>
+                    <span>秒</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- 报名入口 -->
+              <div class="entrance-block">
+                <ul class="row">
+                  <li class="col-lg-12 col-sm-6">
+                    <a href="{:url('index/needknow/index')}" class="link-entrance mt-25">
+                      <i class="iconfont icon-ticket"></i>
+                      赛事报名
+                    </a>
+                  </li>
+                  <li class="col-lg-12 col-sm-6">
+                    <a href="{:url('index/cases/formSearch')}" class="link-entrance mt-25">
+                      <i class="iconfont icon-search"></i>
+                      报名查询
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <script type="text/javascript" src='__CDN__/assets/libs/jquery/dist/jquery.min.js'></script>
+            <script>
+            $.ajax({
+              url:"{:url('Common/daojishi')}",
+              dataType:'json',//服务器返回json格式数据
+              type:'get',//HTTP请求类型
+              timeout:10000,//超时时间设置为10秒；
+              headers:{'Content-Type':'application/json'},                  
+              success:function(data){
+                var time = data[0].deadline;
+                $("#Atitle").text(data[0].title+"活动倒计时");
+                $("#Atime").text(time);
+                countTime()
+                function countTime() {  
+                  //获取当前时间  
+                  var date = new Date();  
+                  var now = date.getTime();  
+                  //设置截止时间  
+                  var str=time;
+                  var endDate = new Date(str);
+                  var end = endDate.getTime();  
+                  //时间差  
+                  var leftTime = end-now; 
+                  if (leftTime > 0) {
+                    //定义变量 d,h,m,s保存倒计时的时间  
+                    var d,h,m,s;  
+                    if (leftTime>=0) {  
+                        d = Math.floor(leftTime/1000/60/60/24);  
+                        h = Math.floor(leftTime/1000/60/60%24);  
+                        m = Math.floor(leftTime/1000/60%60);  
+                        s = Math.floor(leftTime/1000%60);                     
+                    }
+                    //将倒计时赋值到div中  
+                    document.getElementById("_d").innerHTML = d;  
+                    document.getElementById("_h").innerHTML = h;  
+                    document.getElementById("_m").innerHTML = m;  
+                    document.getElementById("_s").innerHTML = s;  
+                    //递归每秒调用countTime方法，显示动态时间效果  
+                    setTimeout(countTime,1000);  
+                  }else{
+                    document.getElementById("_d").innerHTML = 0;  
+                    document.getElementById("_h").innerHTML = 0;  
+                    document.getElementById("_m").innerHTML = 0;  
+                    document.getElementById("_s").innerHTML = 0;  
+                  }
+                }
+              }
+            })
+            </script>

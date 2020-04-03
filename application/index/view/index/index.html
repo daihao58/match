@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="__CDN__/static/js/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="__CDN__/static/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="__CDN__/static/css/style.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn50hiv.min.js"></script>
+      <script src="https://oss.maxcdn50min.js"></script>
+    <![endif]-->
+    <title>首页</title>
+  </head>
+  <body>
+    <div class="page page-index">
+      <!-- header -->
+    {include file="common/top" /}
+    <section id="pageContainer" class="page-container">
+        <div class="container">
+          <!-- banner/倒计时 -->
+          <div class="row">
+            <!-- banner -->
+            <div class="col-lg-9 col-sm-12 mt-bk">
+              <div class="banner-wrap">
+                <div id="banner" class="banner swiper-container">
+                  <ul class="swiper-wrapper">                
+                    {volist name="images" id="vo"}
+                    <li class="swiper-slide">
+                      <img class="banner-img" src="{$vo.imgurl}" />
+                    </li>
+                    {/volist}
+
+                  </ul>
+                  <div id="bannerPager" class="swiper-pagination"></div>
+                </div>
+              </div>
+            </div>
+            <!-- 倒计时/报名入口 -->
+            {include file="common/daojishi" /}
+          </div>
+          <!-- 视频 -->
+          <ul class="video-block row">
+            {volist name="videos" id="vo"}
+            <li class="col-lg-3 col-sm-6 mt-bk">
+              <div class="video-item">
+              <a class="btn-play-video iconfont icon-play" style="width:93%; height:97%; object-fit:fill">
+                <video class="btn-play-video iconfont icon-play" style="width:100%; height:100%; object-fit:fill" controls>
+                  <source src="{$vo.videourl}" type="video/ogg">
+                </video>
+              </a>
+                
+              </div>
+            </li>
+            {/volist}
+          </ul>
+          <!-- 其他入口 -->
+          <ul class="other-entrance-block row">
+            <li class="col-lg-3 col-sm-6 mt-bk">
+              <a href="{:url('index/cases/saishi')}" class="link-entrance link-entrance-ssgc">赛事规程</a>
+            </li>
+            <li class="col-lg-3 col-sm-6 mt-bk">
+              <a href="{:url('index/cases/newslist')}" class="link-entrance link-entrance-bmxz">新闻媒体</a>
+            </li>
+            <li class="col-lg-3 col-sm-6 mt-bk">
+              <a href="{:url('us/index',['id'=>1])}" class="link-entrance link-entrance-sshz">赛事合作</a>
+            </li>
+            <li class="col-lg-3 col-sm-6 mt-bk">
+              <a href="{:url('index/wonderful/index')}" class="link-entrance link-entrance-jcsj">精彩瞬间</a>
+            </li>
+          </ul>
+          <!-- 新闻列表 -->
+          <div class="row">
+            <!-- news -->
+            <div class="col-lg-9 col-sm-12 mt-bk">
+              <div class="news-block white-block">
+                <div id="newsPager" class="tab-title">
+                  <a class="btn-tab active">新闻公告</a>
+                  <a class="btn-tab">活动公告</a>
+                </div>
+                <div id="newsTab" class="swiper-container mt-20">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <ul class="news-list">
+                        {volist name="titles" id="vo"}
+                          <li>
+                            <a href="{:url('index/cases/newsdetail',['id'=>$vo.id])}" class="news-link" value="{$vo.id}" >{$vo.title}</a>
+                          </li>
+                        {/volist}
+                      </ul>
+                    </div>
+                    <div class="swiper-slide">
+                      <ul class="news-list">
+                      {volist name="activity" id="vo"}
+                        <li>
+                          <a href="{:url('index/cases/match',['id'=>$vo.id])}" class="news-link">{$vo.title}</a>
+                        </li>
+                      {/volist}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- others -->
+            <div class="col-lg-3 col-sm-12">
+              <div class="row">
+                <div class="col-lg-12 col-sm-6 mt-bk">
+                  <a href="{:url('index/needknow/index')}" class="link-entrance mt-25">
+                    <i class="iconfont icon-ticket"></i>
+                    报名须知
+                  </a>
+                </div>
+              <!--  <div class="col-lg-12 col-sm-6">
+                  <div class="black-block block-2 mt-bk"></div>
+                  <div class="black-block block-2 mt-bk"></div>
+                </div>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- footer -->
+      {include file="common/footer" /}
+    </div>
+    <script src="__CDN__/static/js/jquery-3.3.1.min.js"></script>
+    <script src="__CDN__/static/js/fastclick.js"></script>
+    <script src="__CDN__/static/js/navSlider.js"></script>
+    <script src="__CDN__/static/js/jquery.counter.js"></script>
+    <script src="__CDN__/static/js/common.js"></script>
+    <!-- swipper -->
+    <script src="__CDN__/static/js/swiper/swiper.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="__CDN__/static/js/bootstrap.min.js"></script>
+
+    <!-- 滚动条美化插件 -->
+    <script src="__CDN__/static/js/jquery.nicescroll.min.js"></script>
+    <!-- 数字动画插件 -->
+    <script src="__CDN__/static/js/countUp.min.js"></script>
+
+    <script>
+      $(function() {
+        // banner轮播
+        if ($('#banner .swiper-slide').length > 1) {
+          new Swiper('#banner', {
+            autoplay: true,
+            loop: true,
+            pagination: {
+              el: '#bannerPager'
+            }
+          })
+        }
+        // tab
+        var newsTab = new Swiper('#newsTab')
+        $('#newsPager .btn-tab').on('click', function(e) {
+          e.preventDefault()
+
+          var index = $(this).index()
+
+          $(this)
+            .addClass('active')
+            .siblings()
+            .removeClass('active')
+          newsTab.slideTo(index, 0)
+        })
+      })
+    </script>
+  </body>
+</html>

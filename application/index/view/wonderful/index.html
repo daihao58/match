@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="__CDN__/static/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="__CDN__/static/css/style.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn50hiv.min.js"></script>
+      <script src="https://oss.maxcdn50min.js"></script>
+    <![endif]-->
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="page page-media-list">
+      <!-- header -->
+      {include file="common/top" /}
+      <!-- container -->
+      <section id="pageContainer" class="page-container">
+        <div class="container">
+          <div class="row">
+            <!-- 新闻列表 -->
+            <div class="col-lg-9 col-sm-12 mt-bk">
+              <div class="video-block white-block">
+                <h3 class="t-c">精彩瞬间</h3>
+                <ul class="media-list row">
+                  {volist name="activity" id="vo"}
+                  <li class="col-lg-4 col-sm-6 mt-40">
+                    <a href="{:url('index/wonderful/detail',['id'=>$vo.id])}" class="media-item link-block">
+                      <div class="img-wrap">
+                        <img src="{$vo.imgurl}" alt="" />
+                      </div>
+                      <div class="item-title">{$vo.title}</div>
+                    </a>
+                  </li>
+                  {/volist}
+                </ul>
+              </div>
+            </div>
+            <!-- 倒计时/报名入口 -->
+            {include file="common/daojishi" /}
+          </div>
+        </div>
+      </section>
+      <!-- footer -->
+     {include file="common/footer" /}
+    </div>
+    <script src="__CDN__/static/js/jquery-3.3.1.min.js"></script>
+    <script src="__CDN__/static/js/navSlider.js"></script>
+    <script src="__CDN__/static/js/common.js"></script>
+    <script src="__CDN__/static/js/countUp.min.js"></script>
+    <script src="__CDN__/static/js/fastclick.js"></script>
+    <script src="__CDN__/static/js/jquery.counter.js"></script>
+  </body>
+</html>

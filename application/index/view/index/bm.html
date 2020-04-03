@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="__CDN__/static/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="__CDN__/static/css/style.css" />
+    <link rel="stylesheet" href="__CDN__/static/css/dialog.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn50hiv.min.js"></script>
+      <script src="https://oss.maxcdn50min.js"></script>
+    <![endif]-->
+    <title>赛事报名</title>
+  </head>
+  <body>
+    <div class="page page-search">
+      <!-- header -->
+      {include file="common/top" /}
+      <!-- container -->
+      <section id="pageContainer" class="page-container">
+        <div class="container">
+          <div class="row">
+            <!-- 新闻列表 -->
+            <div class="col-lg-9 col-sm-12 mt-bk">
+              <div class="apply-block white-block">
+                <form action="" class="form-block">
+                  <!-- 选手信息 -->
+                  <div>
+                    <h3 class="t-c">选手信息</h3>
+                    <ul class="form-group">
+                      <li class="form-item">
+                        <label class="form-label">选手姓名</label>
+                        <input class="form-inp" name="stu_name" id="stu_name" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">选手年龄</label>
+                        <input class="form-inp" name="age" id="age" type="number" />
+                      </li>
+                      <li class="form-item">
+                        <span class="form-label">选手性别</span>
+                        <div class="mt-15">
+                          <label class="radio">
+                            <input name="sex" value="1" type="radio" checked />
+                            <i class="radio-box"></i>
+                            <span>男</span>
+                          </label>
+                          <label class="radio">
+                            <input name="sex" value="2" type="radio" />
+                            <i class="radio-box"></i>
+                            <span>女</span>
+                          </label>
+                        </div>
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">出生日期</label>
+                        <input class="form-inp" name="birthday" id="birthday" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">所在学校</label>
+                        <input class="form-inp" name="school" id="school" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">所在年级</label>
+                        <input class="form-inp" name="grade" id="grade" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">兴趣爱好</label>
+                        <input class="form-inp" name="hobby" id="hobby" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">曾获得奖项</label>
+                        <input class="form-inp" name="prize" id="prize" type="text" />
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- 家长信息 -->
+                  <div class="mt-50">
+                    <h3 class="t-c">家长信息</h3>
+                    <ul class="form-group">
+                      <li class="form-item">
+                        <label class="form-label">家长姓名</label>
+                        <input class="form-inp" name="par_name" id="par_name" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">家长联系方式</label>
+                        <input class="form-inp" name="mobile" id="mobile" type="tel" />
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- 参赛信息 -->
+                  <div class="mt-50">
+                    <h3 class="t-c">参赛信息</h3>
+                    <ul class="form-group">
+                      <li class="form-item">
+                        <span class="form-label">参赛地区</span>
+                        <ul class="row row-2 mt-15">
+                          <li class="col-lg-3 col-sm-4">
+                            <label class="radio">
+                              <input name="area" value="宿城区" type="radio" checked />
+                              <i class="radio-box"></i>
+                              <span>宿城区</span>
+                            </label>
+                          </li>
+                          <li class="col-lg-3 col-sm-4">
+                            <label class="radio">
+                              <input name="area" value="宿豫区" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>宿豫区</span>
+                            </label>
+                          </li>
+                          <li class="col-lg-3 col-sm-4">
+                            <label class="radio">
+                              <input name="area" value="泗阳县" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>泗阳县</span>
+                            </label>
+                          </li>
+                          <li class="col-lg-3 col-sm-4">
+                            <label class="radio">
+                              <input name="area" value="沭阳县" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>沭阳县</span>
+                            </label>
+                          </li>
+                          <li class="col-lg-3 col-sm-4">
+                            <label class="radio">
+                              <input name="area" value="泗洪县" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>泗洪县</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="form-item">
+                        <span class="form-label">参赛类别</span>
+                        <ul id="typeForm" class="row row-2 mt-15">
+                          <li class="col-lg-3 col-sm-4">
+                            <label class="radio">
+                              <input name="type" value="1" type="radio" checked />
+                              <i class="radio-box"></i>
+                              <span>个人</span>
+                            </label>
+                          </li>
+                          <li class="col-lg-9 col-sm-12">
+                            <label class="radio">
+                              <input
+                                      id="isGroupRadio"
+                                      name="type"
+                                      type="radio"
+                              />
+                              <i class="radio-box"></i>
+                              <span>组合需填写人数</span>
+                            </label>
+                            <input
+                                    id="membersNum"
+                                    class="inp-line"
+                                    type="text"
+                            />
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="form-item">
+                        <span class="form-label">参赛组别</span>
+                        <ul class="mt-15">
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="学前组4-6岁" type="radio" checked />
+                              <i class="radio-box"></i>
+                              <span>学前组4-6岁</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="小学A组 7周岁—8周岁，小学一、二年级" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>小学A组 7周岁—8周岁，小学一、二年级</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="小学B组：9周岁—10周岁，小学三、四年级" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>小学B组：9周岁—10周岁，小学三、四年级</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="小学C组：11周岁—12周岁，小学五、六年级" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>小学C组：11周岁—12周岁，小学五、六年级</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="初中组：13周岁—16周岁。初中一年级至初中三年级" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>初中组：13周岁—16周岁。初中一年级至初中三年级</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="高中组：16周岁—18周岁，高中一年级至三年级" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>高中组：16周岁—18周岁，高中一年级至三年级</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="组合组：4周岁—18周岁（2-30人/组合），幼儿园中班至高中" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>组合组：4周岁—18周岁（2-30人/组合），幼儿园中班至高中</span>
+                            </label>
+                          </li>
+                          <li class="mt-15">
+                            <label class="radio">
+                              <input name="groupType" value="海外组：4周岁—18周岁，(持非内地居民身份证报名的选手)幼儿园中班至高中" type="radio" />
+                              <i class="radio-box"></i>
+                              <span>海外组：4周岁—18周岁，(持非内地居民身份证报名的选手)幼儿园中班至高中</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">作品名称及形式</label>
+                        <input class="form-inp" name="worktitle" id="worktitle" type="text" />
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">参赛视频 (小于50M,MP4格式)</label>
+                        <div id="uploadVideo" class="module-upload-img mt-15">
+                          <ul class="uploaded-list"></ul>
+                          <!-- 上传文件按钮 -->
+                          <label class="upload-button">
+                            <input type="file" name="video" id="video" accept="video/mp4" />
+                            <span class="upload-btn-icon"
+                            ><i class="icon-add"></i
+                            ></span>
+                          </label>
+                        </div>
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">一寸照片 (白底小于200K)</label>
+                        <div id="uploadPic" class="module-upload-img mt-15">
+                          <ul class="uploaded-list"></ul>
+                          <!-- 上传文件按钮 -->
+                          <label class="upload-button">
+                            <input type="file" name="img" id="img" accept="image/jpg,image/jpeg,image/png"/>
+                            <span class="upload-btn-icon"
+                            ><i class="icon-add"></i
+                            ></span>
+                          </label>
+                        </div>
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">手机号</label>
+                        <input class="form-inp" name="phone" id="phone" type="tel" />
+                        <a id="btnSendMsgCode" class="btn-msg-code"
+                        >发送验证码</a
+                        >
+                      </li>
+                      <li class="form-item">
+                        <label class="form-label">验证码</label>
+                        <input class="form-inp" name="code" id="code" type="tel" />
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- 提交按钮 -->
+                  <div class="t-c mt-50">
+                    <div class="btn btn-primary tijiao">提交</div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- 倒计时/报名入口 -->
+            {include file="common/daojishi" /}
+          </div>
+        </div>
+      </section>
+      <!-- footer -->
+      {include file="common/footer" /}
+    </div>
+
+
+    <script src="__CDN__/static/js/jquery-3.3.1.min.js"></script>
+    <!-- FastClick -->
+    <script src="__CDN__/static/js/fastclick.js"></script>
+    <!-- nav-menu -->
+    <script src="__CDN__/static/js/navSlider.js"></script>
+    <!-- counter -->
+    <script src="__CDN__/static/js/jquery.counter.js"></script>
+    <!-- common -->
+    <script src="__CDN__/static/js/common.js"></script>
+    <!-- upload -->
+    <script src="__CDN__/static/js/jquery.upload.js"></script>
+
+    <script src="__CDN__/static/js/zepto.min.js"></script>
+    <script src="__CDN__/static/js/dialog.js"></script>
+
+    <script>
+      $(function() {
+        // 参赛类型 -- 选择组合
+        !$('#isGroupRadio').prop('checked') &&
+        $('#membersNum').prop('disabled', true)
+
+        $('#typeForm input[type="radio"]').on('click', function() {
+          var id = $(this).prop('id')
+          var checked = $(this).prop('checked')
+          var disabled = !(id === 'isGroupRadio' && checked)
+
+          $('#membersNum').prop('disabled', disabled)
+        })
+
+        // 上传参赛视频
+        $('#uploadVideo').imgUpload({
+          size: 30 * 1024 * 1024,
+          limited: false,
+          url: "{:url('index/index/upload')}", //上传路径
+          onSuccess: function(id) {
+            //
+          },
+          onError: function(err) {
+            alert(err)
+          } //失败回调
+        })
+
+        // 上传一寸照片
+        $('#uploadPic').imgUpload({
+          limited: true,
+          len: 1,
+          url: "{:url('index/index/upload')}", //上传路径
+          onSuccess: function(id) {
+           //
+          },
+          onError: function(err) {
+            alert(err)
+          } //失败回调
+        })
+
+        // 视频预览
+        $('#uploadVideo').on('click', 'video', function() {
+          var $popup = $(
+                  '<div class="popup"><a class="popup-close"><i class="icon-close"></i></a></div>'
+          )
+          var $popcon = $('<div class="popup-content"></div>')
+          var $video = $('<video controls src="' + this.src + '">')
+
+          $popcon.append($video)
+          $popup.append($popcon).appendTo('.page')
+          $video[0].play()
+        })
+
+        // 预览照片
+        $('#uploadPic').on('click', 'img', function() {
+          var $popup = $(
+                  '<div class="popup"><a class="popup-close"><i class="icon-close"></i></a></div>'
+          )
+          var $popcon = $('<div class="popup-content"></div>')
+          var $img = $('<img src="' + this.src + '">')
+
+          $img.appendTo($popcon)
+          $popup.append($popcon).appendTo('.page')
+        })
+
+        // 关闭预览
+        $('.page').on('click', '.popup-close', function(e) {
+          e.preventDefault()
+
+          $('.popup').remove()
+        })
+
+        // 发送验证码
+        $('#btnSendMsgCode').on('click', function(e) {
+          e.preventDefault()
+          var el = this
+          handleSendMsgCode({
+            el: el,
+            duration: 60
+          })
+           $.ajax({
+             url: "{:url('index/index/code')}",
+             type: 'POST',
+             dataType:"json",
+             data:{
+               phone : $("#phone").val(),
+             },
+             success: function(data) {
+             },
+             error: function(err) {
+               //alert(err)
+             }
+           })
+        })
+      })
+
+
+      $(".tijiao").on('click',function(){
+        var stu_name = $("#stu_name").val();
+        var age = $("#age").val();
+        var sex = $("input[name='sex']:checked").val();
+
+        var birthday = $("#birthday").val();
+        var school = $("#school").val();
+        var grade = $("#grade").val();
+        var hobby = $("#hobby").val();
+        var prize = $("#prize").val();
+        var par_name = $("#par_name").val();
+        var mobile = $("#mobile").val();
+
+        var area = $("input[name='area']:checked").val();
+
+        var type = $("input[name='type']:checked").val();
+        var membersNum = $("#membersNum").val();
+
+        var groupType = $("input[name='groupType']:checked").val();
+
+        var worktitle = $("#worktitle").val();
+
+        var phone = $("#phone").val();
+        var code = $("#code").val();
+
+
+        if(type == 'on'){
+          type = membersNum;
+        }
+
+
+
+        var video = new Array();
+        $(".tp_vid").each(function() {
+          video.push($(this).attr("src"));
+        });
+        var img = new Array();
+        $(".tp_img").each(function() {
+          img.push($(this).attr("src"));
+        });
+
+
+
+
+
+        $.ajax({
+          url:"{:url('index/index/ajax')}",
+          type: 'POST',
+          //processData: false, // 用于对data参数进行序列化处理 这里必须false
+          //contentType: false, // 必须
+          traditional:true,
+          dataType:"json",
+          data: {
+            'stu_name': stu_name,
+            'age': age,
+            'sex': sex,
+            'birthday': birthday,
+            'school': school,
+            'grade': grade,
+            'hobby': hobby,
+            'prize': prize,
+            'par_name': par_name,
+            'mobile': mobile,
+            'area': area,
+            'type': type,
+            'groupType': groupType,
+            'worktitle': worktitle,
+
+            'video' : JSON.stringify(video),
+            'img' : JSON.stringify(img),
+
+            'phone': phone,
+            'code': code,
+          },
+          success: function(data) {
+
+            if(data.code == 502){
+              var dialog1 = $(document).dialog({
+                content: data.msg,
+              });
+            }else{
+              var dialog1 = $(document).dialog({
+                content: data.msg,
+              });
+            }
+          },
+          error: function(err) {
+
+          }
+        })
+      })
+
+    </script>
+  </body>
+</html>

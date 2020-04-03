@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="__CDN__/static/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="__CDN__/static/css/style.css" />
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn50hiv.min.js"></script>
+      <script src="https://oss.maxcdn50min.js"></script>
+    <![endif]-->
+    <title>新闻媒体</title>
+  </head>
+  <body>
+    <div class="page page-news-list">
+      <!-- header -->
+      {include file="common/top" /}
+      <!-- container -->
+      <section id="pageContainer" class="page-container">
+        <div class="container">
+          <div class="row">
+            <!-- 新闻列表 -->
+            <div class="col-lg-9 col-sm-12 mt-bk">
+              <div class="news-block white-block">
+                <h3 class="t-c">新闻&媒体</h3>
+                <div class="mt-30">
+                  <ul class="news-list">
+                  {volist name="titles" id="vo"}
+                    <li>
+                      <a href="{:url('index/cases/newsdetail',['id'=>$vo.id])}" class="news-link" value="{$vo.id}" >{$vo.title}</a>
+                    </li>
+                  {/volist}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- 倒计时/报名入口 -->
+            {include file="common/daojishi" /}
+          </div>
+        </div>
+      </section>
+      <!-- footer -->
+      {include file="common/footer" /}
+    </div>
+    <script src="__CDN__/static/js/jquery-3.3.1.min.js"></script>
+    <script src="__CDN__/static/js/navSlider.js"></script>
+    <script src="__CDN__/static/js/common.js"></script>
+    <script src="__CDN__/static/js/countUp.min.js"></script>
+    <script src="__CDN__/static/js/fastclick.js"></script>
+    <script src="__CDN__/static/js/jquery.counter.js"></script>
+  </body>
+</html>

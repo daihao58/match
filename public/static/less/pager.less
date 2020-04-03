@@ -1,0 +1,58 @@
+//
+// Pager pagination
+// --------------------------------------------------
+.pager {
+  padding-left: 0;
+  .px2rem(margin-top, 50);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  &:extend(.clearfix all);
+  li {
+    display: inline;
+    padding: 8px 6px;
+    vertical-align: middle;
+    > a,
+    > span {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      line-height: 30px;
+      font-size: 16px;
+      background-color: #fff;
+      .border1px(border, solid, #ccc);
+      border-radius: 4px;
+      vertical-align: middle;
+      overflow: hidden;
+    }
+    > a:hover,
+    > a:focus {
+      border-color: @color-main;
+    }
+    > .ellipsis {
+      border: none;
+    }
+  }
+  .active {
+    > span {
+      color: #fff;
+      border-color: @color-main;
+      background-color: @color-main;
+    }
+  }
+  .disabled {
+    > a,
+    > a:hover,
+    > a:focus,
+    > span {
+      color: #666;
+      background-color: #f5f5f5;
+      border-color: #ccc;
+      cursor: @cursor-disabled;
+    }
+  }
+}
+
+#nextPage, #prePage {
+  line-height: 27px;
+}

@@ -1,0 +1,186 @@
+      <header id="pageHeader" class="page-header">
+        <!-- 头部宣传 -->
+        <div class="top-banner">
+          <div class="container">
+            <img class="logo mt-20" src="__CDN__/static/img/logo.png" alt="婉珠艺教" />
+            <img
+              class="slogan"
+              src="__CDN__/static/img/slogan.png"
+              alt="孩子总有一面是天才"
+            />
+            <img class="cloud" src="__CDN__/static/img/bg-cloud.png" alt="云" />
+          </div>
+        </div>
+        <!-- pc导航 -->
+        <nav class="top-nav">
+          <div class="container cf">
+            <ul id="topNavMenu" class="top-nav-menu fl">
+              <li class="nav-item {if condition="$cur eq 'index' "}cur{/if} ">
+                <a href="{:url('/')}" class="nav-link">首页</a>
+              </li>
+              <li class="nav-item {if condition="$cur eq 'match' "}cur{/if} ">
+                <a class="nav-link">赛事详情</a>
+                <ul class="nav-sub-menu">
+                  {volist name="activelist" id="vo"}
+                  <li class="nav-sub-item"><a href="{:url('index/cases/match',['id'=>$vo.id])}">{$vo.title}</a></li>
+                  {/volist}
+                </ul>
+              </li>
+              <li class="nav-item {if condition="$cur eq 'videolist' "}cur{/if} ">
+                <a href="{:url('index/cases/videolist')}" class="nav-link">精彩活动</a>
+
+              </li>
+              <li class="nav-item {if condition="$cur eq 'newslist' "}cur{/if} ">
+                <a href="{:url('index/cases/newslist')}" class="nav-link">新闻&媒体</a>
+              </li>
+
+
+              <!--<li class="nav-item">
+                <a href="{:url('index/cases/videolist')}" class="nav-link">精品课程</a>
+              </li>-->
+              <li class="nav-item {if condition="$cur eq 'kc' "}cur{/if} ">
+                <a class="nav-link">精品课程</a>
+                <ul class="nav-sub-menu">
+                  {volist name="kccat" id="vo"}
+                  <li class="nav-sub-item">
+                    <a href="{:url('index/kc/index',['id'=>$vo.id])}">{$vo.name}</a>
+                    <ul class="nav-ter-menu">
+                      {empty name ="$vo.children"}
+
+                      {else /}
+                        {volist name="vo.children" id="v"}
+                        <li class="nav-ter-item">
+                          <a href="{:url('index/kc/index',['id'=>$v.id])}">{$v.name}</a>
+                        </li>
+                        {/volist}
+                      {/empty}
+                    </ul>
+                  </li>
+                  {/volist}
+                  <!--<li class="nav-sub-item">
+                    <a href="">系统1</a>
+                    <ul class="nav-ter-menu">
+                      <li class="nav-ter-item"><a href="">三级导航</a></li>
+                      <li class="nav-ter-item"><a href="">三级导航</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-sub-item">
+                    <a href="">系统2</a>
+                    <ul class="nav-ter-menu">
+                      <li class="nav-ter-item"><a href="">三级导航</a></li>
+                    </ul>
+                  </li>-->
+                </ul>
+              </li>
+
+
+              <li class="nav-item {if condition="$cur eq 'welfare' "}cur{/if}  ">
+                <a href="{:url('welfare/index')}" class="nav-link">公益服务</a>
+              </li>
+
+              <li class="nav-item {if condition="$cur eq 'ysby' "}cur{/if} ">
+                <a href="{:url('index/perform/index')}" class="nav-link">影视表演</a>
+              </li>
+
+              <li class="nav-item {if condition="$cur eq 'us' "}cur{/if} ">
+                <a class="nav-link">联系我们</a>
+                <ul class="nav-sub-menu">
+                  {volist name="us" id="vo"}
+                  <li class="nav-sub-item"><a href="{:url('index/us/index',['id'=>$vo.id])}">{$vo.title}</a></li>
+                  {/volist}
+                </ul>
+              </li>
+            </ul>
+            <!--<div class="fr">
+              <a href="#" class="iconfont icon-search"></a>
+            </div>-->
+          </div>
+        </nav>
+        <!-- mobile导航 -->
+        <nav class="top-nav-mobile">
+          <a id="btnShowNavMenu" class="iconfont icon-show-nav"></a>
+          <div class="top-nav-menu-mobile">
+            <div class="top-nav-menu-content">
+              <a id="btnHideNavMenu" class="iconfont icon-close"></a>
+              <ul>
+                <li class="nav-item-m">
+                  <a href="{:url('/')}" class="nav-link-m">首页</a>
+                </li>
+                <li class="nav-item-m">
+                  <a href="#" class="nav-link-m">赛事报名</a>
+                  <a class="btn-pull-down iconfont icon-arrow"></a>
+                  <ul class="nav-sub-menu-m">
+                    {volist name="activelist" id="vo"}
+                    <li>
+                      <a href="{:url('index/cases/match',['id'=>$vo.id])}" class="nav-link-m">{$vo.title}</a>
+                    </li>
+                    {/volist}
+                  </ul>
+
+
+
+                </li>
+                <li class="nav-item-m">
+                  <a href="{:url('index/cases/videolist')}" class="nav-link-m">精彩活动</a>
+
+                </li>
+                <li class="nav-item-m">
+                  <a href="{:url('index/cases/newslist')}" class="nav-link-m">新闻&媒体</a>
+                </li>
+                <li class="nav-item-m">
+                  <a class="nav-link-m">精品课程</a>
+                  <a class="btn-pull-down iconfont icon-arrow"></a>
+                  <!-- 二级导航 -->
+                  <ul class="nav-sub-menu-m">
+                    {volist name="kccat" id="vo"}
+                    <li class="nav-item-m">
+                      <a href="{:url('index/kc/index',['id'=>$vo.id])}" class="nav-link-m">{$vo.name}</a>
+                      {empty name ="$vo.children"}
+                      {else /}
+                      <a class="btn-pull-down iconfont icon-arrow"></a>
+                      {/empty}
+
+                      <!-- 三级导航 -->
+                      <ul class="nav-sub-menu-m">
+                        {empty name ="$vo.children"}
+
+                        {else /}
+                        {volist name="vo.children" id="v"}
+                        <li class="nav-sub-item-m">
+                          <a href="{:url('index/kc/index',['id'=>$v.id])}" class="nav-link-m">{$v.name}</a>
+                        </li>
+                        {/volist}
+                        {/empty}
+                      </ul>
+                    </li>
+                    {/volist}
+                  </ul>
+                </li>
+
+                <li class="nav-item-m">
+                  <a href="{:url('welfare/index')}" class="nav-link-m">公益服务</a>
+                </li>
+
+                <li class="nav-item-m">
+                  <a href="{:url('index/perform/index')}" class="nav-link-m">公益服务</a>
+                </li>
+
+                <li class="nav-item-m">
+                  <a href="#" class="nav-link-m">联系我们</a>
+                  <a class="btn-pull-down iconfont icon-arrow"></a>
+                  <ul class="nav-sub-menu-m">
+                    {volist name="us" id="vo"}
+                    <li>
+                      <a href="{:url('index/us/index',['id'=>$vo.id])}" class="nav-link-m">{$vo.title}</a>
+                    </li>
+                    {/volist}
+                  </ul>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!-- container -->
+      
